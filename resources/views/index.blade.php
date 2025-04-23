@@ -21,8 +21,16 @@
 </head>
 <body class="bg-light py-4">
 
+    <nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
+        <div class="container">
+            <h1 class="mb-4">Daftar Game</h1>
+            <div class="ml-auto d-flex align-items-center">
+                <a href="{{ route('admin.login.form') }}" class="btn btn-outline-primary">Login</a>
+            </div>
+        </div>
+    </nav>
+
 <div class="container">
-    <h1 class="mb-4">Daftar Game</h1>
     <div class="row">
         @foreach ($games as $game)
             <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">

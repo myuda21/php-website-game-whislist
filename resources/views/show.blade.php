@@ -8,7 +8,7 @@
 <body class="bg-light py-5">
   <div class="container">
     <a href="{{ route('games.index') }}" class="btn btn-outline-secondary mb-4">← Kembali ke Daftar</a>
-    <div class="card shadow">
+    <div class=>
       @if ($game->gambar)
         <img src="{{ asset('img/' . $game->gambar) }}" class="card-img-top" style="height:300px; object-fit:cover;" alt="{{ $game->nama }}">
       @else
