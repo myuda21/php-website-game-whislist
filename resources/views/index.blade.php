@@ -34,7 +34,7 @@
     <div class="row">
         @foreach ($games as $game)
             <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
-                <div class="card h-100 shadow-sm">
+                <div class="card shadow-sm">
                     @if ($game->gambar)
                         <img src="{{ asset('img/' . $game->gambar) }}" class="card-img-top" alt="Gambar Game">
                     @else
