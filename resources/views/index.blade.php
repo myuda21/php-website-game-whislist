@@ -50,7 +50,14 @@
                                 Rp {{ number_format($game->harga, 0, ',', '.') }}
                             @endif
                         </p>
-                        <a href="{{ route('games.show', $game->id) }}" class="btn btn-primary">Lihat Detail</a>
+                        <div class="row">
+                            <div class="d-flex gap-2">
+                                <a href="{{ route('games.show', $game->id) }}" class="btn btn-primary">Lihat Detail</a>
+                                <button onclick="window.open('{{ $game->link }}', '_blank')" class="btn btn-primary">
+                                    Go to Link
+                                </button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

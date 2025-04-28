@@ -12,5 +12,6 @@ class Game extends Model
         'harga',
         'deskripsi',
         'gambar',
+        'link',
     ];
 }

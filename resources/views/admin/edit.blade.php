@@ -10,7 +10,8 @@
             <input type="text" name="nama" value="{{ $game->nama }}" class="form-control mb-2"><br>
             <input type="number" name="harga" value="{{ $game->harga }}" class="form-control mb-2"><br>
             <textarea name="deskripsi" placeholder="Deskripsi" class="form-control mb-2">{{ $game->deskripsi }}</textarea>
-            <input type="file" name="gambar"><br>
+            <input type="file" name="gambar"><br><br>
+            <input type="text" name="link" value="{{ $game->link }}" class="form-control mb-2"><br>
             <br>
             <button type="submit" class="btn btn-primary">Update</button>
             <button type="button" class="btn btn-secondary" onclick="history.back()">Back</button>

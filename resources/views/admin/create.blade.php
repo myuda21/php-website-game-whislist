@@ -17,6 +17,9 @@
             <div class="form-group">
                 <input type="file" name="gambar" class="form-control-file mb-3">
             </div>
+            <div class="form-group">
+                <input type="text" name="link" placeholder="Link Game" class="form-control mb-2">
+            </div>
 
             <button type="submit" class="btn btn-primary">Simpan</button>
             <button type="button" class="btn btn-secondary" onclick="history.back()">Back</button>
