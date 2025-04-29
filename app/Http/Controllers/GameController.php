@@ -70,19 +70,27 @@ class GameController extends Controller
 
     public function rawgGames(Request $request)
     {
-        // Ambil parameter, dengan default
-        $search   = $request->query('search', '');
-        $page     = $request->query('page', 1);
-        $pageSize = $request->query('page_size', 10);
+        // Ambil query string untuk search, page dan page_size
+        $search = $request->query('search', '');  // Default kosong
+        $page = $request->query('page', 1);  // Default halaman 1
+        $pageSize = $request->query('page_size', 10);  // Default 10 data per halaman
 
+        // Kirim request ke API RAWG
         $response = Http::get(config('services.rawg.url') . '/games', [
-            'key' => config('services.rawg.key')
+            'key' => config('services.rawg.key'),
+            'search' => $search,
+            'page' => $page,
+            'page_size' => $pageSize,
         ]);
 
-        // ambil hasil
-        $rawgGames = $response->json()['results'];
+        // Ambil data dari hasil response API
+        $rawgGames = $response->json()['results'] ?? [];
 
-        // lempar ke view nama variabel rawgGames
-        return view('rawg', compact('rawgGames'));
+        // Ambil metadata pagination
+        $total = $response->json()['count'] ?? 0;
+        $lastPage = (int) ceil($total / $pageSize);
+
+        // Kembalikan view dengan data dan pagination
+        return view('rawg', compact('rawgGames', 'search', 'page', 'pageSize', 'lastPage'));
     }
 }

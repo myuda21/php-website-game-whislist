@@ -31,35 +31,66 @@
         </div>
     </nav>
 
-<div class="container">
-    <div class="row">
-        @forelse ($rawgGames as $game)
-            <div class="col-md-4 mb-4">
-                <div class="card h-100">
-                    @if (!empty($game['background_image']))
-                        <img src="{{ $game['background_image'] }}"
-                             class="card-img-top"
-                             alt="{{ $game['name'] }}">
-                    @endif
-                    <div class="card-body">
-                        <h5 class="card-title">{{ $game['name'] }}</h5>
-                        <p class="card-text">
-                            Released: {{ \Carbon\Carbon::parse($game['released'])->format('d M Y') }}
-                        </p>
-                        <p class="card-text">Rating: {{ $game['rating'] ?? 0 }}</p>
-                        <a href="https://rawg.io/games/{{ $game['slug'] }}"
-                           target="_blank"
-                           class="btn btn-primary">
-                            View on RAWG
-                        </a>
+    <div class="container">
+        <!-- Form Pencarian -->
+        <form method="GET" action="{{ route('games.rawg') }}" class="mb-4 d-flex">
+            <input
+                type="text"
+                name="search"
+                class="form-control me-2"
+                placeholder="Search games..."
+                value="{{ old('search', $search) }}"
+            >
+            <button type="submit" class="btn btn-primary">Search</button>
+        </form>
+
+        <div class="row">
+            @forelse ($rawgGames as $game)
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        @if (!empty($game['background_image']))
+                            <img src="{{ $game['background_image'] }}" class="card-img-top" alt="{{ $game['name'] }}">
+                        @else
+                            <div class="game-placeholder">
+                                <span>No Image</span>
+                            </div>
+                        @endif
+                        <div class="card-body">
+                            <h5 class="card-title">{{ $game['name'] }}</h5>
+                            <p class="card-text">
+                                Released: {{ \Carbon\Carbon::parse($game['released'])->format('d M Y') }}
+                            </p>
+                            <p class="card-text">Rating: {{ $game['rating'] ?? 0 }}</p>
+                            <a href="https://rawg.io/games/{{ $game['slug'] }}" target="_blank" class="btn btn-primary">
+                                View on RAWG
+                            </a>
+                        </div>
                     </div>
                 </div>
-            </div>
-        @empty
-            <p>No games found.</p>
-        @endforelse
+            @empty
+                <p>No games found.</p>
+            @endforelse
+        </div>
+
+        <!-- Paginasi -->
+        <nav aria-label="Page navigation">
+            <ul class="pagination justify-content-center">
+                <li class="page-item @if($page <= 1) disabled @endif">
+                    <a class="page-link" href="{{ route('games.rawg', array_merge(request()->except('page'), ['page' => $page - 1])) }}">
+                        Previous
+                    </a>
+                </li>
+                <li class="page-item disabled">
+                    <span class="page-link">Page {{ $page }} of {{ $lastPage }}</span>
+                </li>
+                <li class="page-item @if($page >= $lastPage) disabled @endif">
+                    <a class="page-link" href="{{ route('games.rawg', array_merge(request()->except('page'), ['page' => $page + 1])) }}">
+                        Next
+                    </a>
+                </li>
+            </ul>
+        </nav>
     </div>
-</div>
 
 </body>
 </html>
