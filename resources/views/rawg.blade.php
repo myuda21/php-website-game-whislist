@@ -19,21 +19,32 @@
         }
     </style>
 </head>
-<body class="bg-light py-4">
+<body class="bg-light">
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
-        <div class="container">
-            <h1 class="mb-4">Daftar Game</h1>
-            <div class="ml-auto d-flex align-items-center">
-                <button type="button" class="btn btn-secondary mx-3" onclick="history.back()">Back</button>
-                <a href="{{ route('admin.login.form') }}" class="btn btn-outline-primary">Login</a>
+    <nav class="navbar navbar-light bg-white shadow-sm">
+        <div class="container d-flex justify-content-between align-items-center">
+            <!-- Centered Logo -->
+            <div>
+                <a class="navbar-brand fw-bold text-primary" href="/">GameZone</a>
             </div>
+
+            <!-- Left links -->
+            <div class="d-flex gap-3">
+                <a class="nav-link" href="{{ route('games.gamePage') }}">CRUD Game</a>
+                <a class="nav-link" href="{{ route('games.rawgGames') }}">Rawg</a>
+            </div>
+
+            <!-- Right link -->
+            <div>
+
+            </div>
+
         </div>
     </nav>
 
-    <div class="container">
+    <div class="container py-4">
         <!-- Form Pencarian -->
-        <form method="GET" action="{{ route('games.rawg') }}" class="mb-4 d-flex">
+        <form method="GET" action="{{ route('games.rawgGames') }}" class="mb-4 d-flex">
             <input
                 type="text"
                 name="search"
@@ -76,7 +87,7 @@
         <nav aria-label="Page navigation">
             <ul class="pagination justify-content-center">
                 <li class="page-item @if($page <= 1) disabled @endif">
-                    <a class="page-link" href="{{ route('games.rawg', array_merge(request()->except('page'), ['page' => $page - 1])) }}">
+                    <a class="page-link" href="{{ route('games.rawgGames', array_merge(request()->except('page'), ['page' => $page - 1])) }}">
                         Previous
                     </a>
                 </li>
@@ -84,7 +95,7 @@
                     <span class="page-link">Page {{ $page }} of {{ $lastPage }}</span>
                 </li>
                 <li class="page-item @if($page >= $lastPage) disabled @endif">
-                    <a class="page-link" href="{{ route('games.rawg', array_merge(request()->except('page'), ['page' => $page + 1])) }}">
+                    <a class="page-link" href="{{ route('games.rawgGames', array_merge(request()->except('page'), ['page' => $page + 1])) }}">
                         Next
                     </a>
                 </li>
