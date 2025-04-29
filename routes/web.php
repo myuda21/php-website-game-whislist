@@ -5,7 +5,8 @@ use App\Http\Controllers\GameController;
 use App\Http\Controllers\AdminController;
 
 Route::get('/', [GameController::class, 'index'])->name('games.index');
-Route::get('/game/{id}', [GameController::class, 'show'])->name('games.show');
+Route::get('/gamePage', [GameController::class, 'gamePage'])->name('games.gamePage');
+Route::get('/gamePage/game/{id}', [GameController::class, 'show'])->name('games.show');
 
 Route::get('/login', [AdminController::class, 'showLoginForm'])->name('admin.login');
 Route::post('/login', [AdminController::class, 'login']);
@@ -20,5 +21,5 @@ Route::get('/admin/login', [AdminController::class, 'showLoginForm'])->name('adm
 Route::post('/admin/logout', [AdminController::class, 'logout'])->name('admin.logout');
 
 Route::get('/games', [GameController::class, 'rawgGames'])->name('games.rawgGames');
-Route::get('/games/rawg', [GameController::class, 'rawgGames'])->name('games.rawg');
+Route::get('/games/rawg', [GameController::class, 'rawgGames'])->name('games.rawgGames');
 
