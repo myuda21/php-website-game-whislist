@@ -53,10 +53,10 @@ class AdminController extends Controller
             'harga' => 'required|numeric',
             'deskripsi' => 'nullable',
             'gambar' => 'nullable|image|max:2048',
-            'link' => 'nullable',
+            'link' => 'nullable|string',
         ]);
 
-        $data = $request->only(['nama', 'harga', 'deskripsi']);
+        $data = $request->only(['nama', 'harga', 'deskripsi', 'link']);
 
         if ($request->hasFile('gambar')) {
             $fileName = time().'.'.$request->gambar->extension();
