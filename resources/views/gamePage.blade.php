@@ -36,7 +36,7 @@
 
             <!-- Right link -->
             <div>
-
+                <a href="{{ route('admin.login.form') }}" class="btn btn-outline-primary">Login</a>
             </div>
 
         </div>
