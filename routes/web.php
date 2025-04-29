@@ -19,3 +19,5 @@ Route::post('/admin/update/{id}', [AdminController::class, 'update'])->name('adm
 Route::get('/admin/login', [AdminController::class, 'showLoginForm'])->name('admin.login.form');
 Route::post('/admin/logout', [AdminController::class, 'logout'])->name('admin.logout');
 
+Route::get('/games', [GameController::class, 'rawgGames'])->name('games.rawgGames');
+

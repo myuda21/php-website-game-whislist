@@ -25,7 +25,8 @@
         <div class="container">
             <h1 class="mb-4">Daftar Game</h1>
             <div class="ml-auto d-flex align-items-center">
-                <a href="{{ route('admin.login.form') }}" class="btn btn-outline-primary">Login</a>
+                <a href="{{ route('admin.login.form') }}" class="btn btn-outline-primary mx-3">Login</a>
+                <a href="{{ route('games.rawgGames') }}" class="btn btn-success">Lihat Semua Game</a>
             </div>
         </div>
     </nav>

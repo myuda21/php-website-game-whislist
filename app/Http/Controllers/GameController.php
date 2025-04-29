@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Game;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
 class GameController extends Controller
 {
@@ -65,5 +66,23 @@ class GameController extends Controller
     public function destroy(Game $game)
     {
         //
+    }
+
+    public function rawgGames(Request $request)
+    {
+        // Ambil parameter, dengan default
+        $search   = $request->query('search', '');
+        $page     = $request->query('page', 1);
+        $pageSize = $request->query('page_size', 10);
+
+        $response = Http::get(config('services.rawg.url') . '/games', [
+            'key' => config('services.rawg.key')
+        ]);
+
+        // ambil hasil
+        $rawgGames = $response->json()['results'];
+
+        // lempar ke view nama variabel rawgGames
+        return view('rawg', compact('rawgGames'));
     }
 }
