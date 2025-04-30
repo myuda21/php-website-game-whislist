@@ -106,7 +106,25 @@
               </div>
           </div>
         </div>
-      </section>
+    </section>
+
+    <section class="hero-section">
+        <div class="container-fluid px-0">
+          <div class="row gx-0">
+            <!-- LEFT: text -->
+            <div class="col-md-6 hero-text">
+              <h1 class="fw-bold">Welcome to GameZone</h1>
+              <p>A simple platform to manage and discover your favorite games, powered by Laravel and the RAWG API.</p>
+              <button type="button" class="btn btn-success">Get Started</button>
+            </div>
+
+            <!-- RIGHT: full-size wave SVG -->
+            <div class="col-md-6 hero-image">
+
+              </div>
+          </div>
+        </div>
+    </section>
 
 
     <!-- Script AOS & Bootstrap -->
