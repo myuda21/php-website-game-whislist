@@ -50,6 +50,43 @@
     </div>
   </section>
 
+   <!-- TESTIMONI -->
+   <section class="py-5 bg-light">
+    <div class="container text-center">
+      <h2 class="fw-bold mb-4">Apa Kata Mereka?</h2>
+      <div class="row g-4 justify-content-center">
+        <div class="col-md-4">
+          <div class="p-4 border rounded bg-white">
+            <p>"GameZone sangat membantu saya dalam mengatur koleksi game saya. Antarmukanya simpel dan fiturnya lengkap!"</p>
+            <h6 class="mt-3">– Alex, Gamer</h6>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="p-4 border rounded bg-white">
+            <p>"Integrasi dengan RAWG API membuat saya bisa mencari info game baru tanpa keluar dari aplikasi!"</p>
+            <h6 class="mt-3">– Rina, Developer</h6>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-5 bg-success text-white text-center">
+    <div class="container">
+      <h2 class="fw-bold mb-3">Siap Memulai Petualangan Game-mu?</h2>
+      <p class="mb-4">Bergabunglah sekarang dan kelola game favoritmu dengan lebih mudah dan menyenangkan!</p>
+      <button class="btn btn-light text-success fw-bold">Mulai Sekarang</button>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="py-3 bg-dark text-white text-center">
+    <div class="container">
+      <small>© 2025 GameZone. All rights reserved.</small>
+    </div>
+  </footer>
+
 
   <!-- SCRIPTS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
