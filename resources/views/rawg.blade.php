@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <title>Daftar Game</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Tambahkan Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <style>
         .game-card img {
             object-fit: cover;
@@ -36,9 +38,8 @@
 
             <!-- Right link -->
             <div>
-
+                <!-- Tambahan jika perlu -->
             </div>
-
         </div>
     </nav>
 
@@ -71,7 +72,32 @@
                             <p class="card-text">
                                 Released: {{ \Carbon\Carbon::parse($game['released'])->format('d M Y') }}
                             </p>
-                            <p class="card-text">Rating: {{ $game['rating'] ?? 0 }}</p>
+
+                            @php
+                                $rating = $game['rating'] ?? 0;
+                                $maxStars = 5;
+                                $fullStars = floor($rating);
+                                $halfStar = ($rating - $fullStars) >= 0.5;
+                                $emptyStars = $maxStars - $fullStars - ($halfStar ? 1 : 0);
+                            @endphp
+
+                            <p class="card-text mb-2">
+                                Rating:
+                                @for ($i = 0; $i < $fullStars; $i++)
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                @endfor
+
+                                @if ($halfStar)
+                                    <i class="bi bi-star-half text-warning"></i>
+                                @endif
+
+                                @for ($i = 0; $i < $emptyStars; $i++)
+                                    <i class="bi bi-star text-warning"></i>
+                                @endfor
+
+                                <span class="ms-1 text-muted">({{ number_format($rating, 1) }})</span>
+                            </p>
+
                             <a href="https://rawg.io/games/{{ $game['slug'] }}" target="_blank" class="btn btn-primary">
                                 View on RAWG
                             </a>
@@ -102,6 +128,15 @@
             </ul>
         </nav>
     </div>
+
+    <footer class="bg-white text-center py-3 mt-5 shadow-sm">
+        <small>
+            Game data and images provided by
+            <a href="https://rawg.io/apidocs" target="_blank" rel="noopener noreferrer">
+                RAWG Video Games Database
+            </a>
+        </small>
+    </footer>
 
 </body>
 </html>
